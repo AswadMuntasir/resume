@@ -212,6 +212,58 @@ $(function(){
 
 
 
+// ========== PARTICLES.JS INIT ==========
+if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 60, density: { enable: true, value_area: 900 } },
+            color: { value: '#28e98c' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.15, random: true, anim: { enable: true, speed: 0.4, opacity_min: 0.05, sync: false } },
+            size: { value: 2, random: true, anim: { enable: true, speed: 1.5, size_min: 0.5, sync: false } },
+            line_linked: { enable: true, distance: 150, color: '#28e98c', opacity: 0.06, width: 1 },
+            move: { enable: true, speed: 0.6, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
+        },
+        retina_detect: true
+    });
+}
+
+// ========== CUSTOM CURSOR ==========
+(function(){
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+    if (!dot || !outline) return;
+    if (window.innerWidth <= 767) return;
+
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
+    document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+    });
+
+    function animateOutline() {
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+        outline.style.left = outlineX + 'px';
+        outline.style.top = outlineY + 'px';
+        requestAnimationFrame(animateOutline);
+    }
+    animateOutline();
+
+    document.querySelectorAll('a, button, .tech-badge, .skill-tag, .service-item, .portfolio-item, .theme-btn, .icon-menu').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { outline.classList.add('hover'); });
+        el.addEventListener('mouseleave', function() { outline.classList.remove('hover'); });
+    });
+})();
+
 function scroll_animations() {
     // var allow_on_mobile = !0;
     // if (typeof config_scroll_animation_on_mobile !== "undefined") allow_on_mobile = config_scroll_animation_on_mobile;

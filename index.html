@@ -2,581 +2,590 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aswad Muntasir - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/AswadMuntasir_Logo.png" style="border-radius: 50%;">
-
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="assets/css/fonts.googleapis.com.css" rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/smooth-scrollbar.css">
-    <link rel="stylesheet" href="assets/css/lightbox.min.css">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-
+    <title>Aswad Muntasir | Portfolio Quest</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/AswadMuntasir_Logo.png" style="border-radius:50%;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/game.css">
 </head>
-<body class="home1-page">
+<body>
 
-    <video class="body-overlay" muted autoplay loop>
-        <source src="assets/images/video2.mp4" type="video/mp4">
-    </video>
+    <!-- Custom Cursor -->
+    <div class="c-dot"></div>
+    <div class="c-ring"></div>
 
-    <div class="page-loader">
-        <div class="bounceball"></div>
-    </div>
+    <!-- Particles Canvas -->
+    <canvas id="particles"></canvas>
 
-    <span class="icon-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </span>
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
 
-    <div class="responsive-sidebar-menu">
-        <div class="overlay"></div>
-        <div class="sidebar-menu-inner">
-            <div class="menu-wrap">
-                <p>Menu</p>
-                <ul class="menu scroll-nav-responsive d-flex">
-                    <li>
-                        <a class="scroll-to" href="#home">
-                            <i class="las la-home"></i> <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-to" href="#about">
-                            <i class="lar la-user"></i> <span>About</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-to" href="#resume">
-                            <i class="las la-briefcase"></i> <span>Resume</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-to" href="#services">
-                            <i class="las la-stream"></i> <span>Services</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-to" href="#skills">
-                            <i class="las la-shapes"></i> <span>Skills</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="scroll-to" href="#portfolio">
-                            <i class="las la-grip-vertical"></i> <span>Portfolios</span>
-                        </a>
-                    </li>
-                    <!-- <li>
-                        <a class="scroll-to" href="#testimonial">
-                            <i class="lar la-comment"></i> <span>Testimonial</span>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a class="scroll-to" href="#contact">
-                            <i class="las la-envelope"></i> <span>Contact</span>
-                        </a>
-                    </li>
-                </ul>
+    <!-- ====== HUD (Heads-Up Display) ====== -->
+    <div class="hud" id="hud">
+        <div class="hud-left">
+            <div class="hud-avatar">
+                <img src="assets/images/logo.png" alt="AM">
             </div>
-
-            <div class="sidebar-social">
-                <p>Social</p>
-                <ul class="social-links d-flex align-items-center">
-                    <li>
-                        <a href="https://stackoverflow.com/users/12500622/aswad-muntasir" target="_blank"><i class="lab la-stack-overflow"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/AswadMuntasir/" target="_blank"><i class="lab la-github"></i></a>
-                    </li>
-                </ul>
+            <div class="hud-info">
+                <span class="hud-name">ASWAD MUNTASIR</span>
+                <span class="hud-class">Software Engineer | Lv. 6+</span>
             </div>
+        </div>
+        <div class="hud-center">
+            <div class="xp-bar-wrap">
+                <div class="xp-bar" id="xpBar"></div>
+                <span class="xp-label" id="xpLabel">0 / 700 XP</span>
+            </div>
+        </div>
+        <div class="hud-right">
+            <button class="hud-btn" id="backBtn" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="hud-btn" id="soundToggle" title="Toggle Sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="hud-btn" id="mapToggle" title="Map">
+                <i class="fas fa-map"></i>
+            </button>
+            <span class="hud-level" id="levelBadge">LV 0</span>
         </div>
     </div>
 
-    <ul class="menu scroll-nav d-flex">
-        <li>
-            <a class="scroll-to" href="#home">
-                <span>Home</span> <i class="las la-home"></i>
-            </a>
-        </li>
-        <li>
-            <a class="scroll-to" href="#about">
-                <span>About</span> <i class="lar la-user"></i>
-            </a>
-        </li>
-        <li>
-            <a class="scroll-to" href="#resume">
-                <span>Resume</span> <i class="las la-briefcase"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#services">
-                <span>Services</span> <i class="las la-stream"></i>
-            </a>
-        </li>
-        <li>
-            <a class="scroll-to" href="#skills">
-                <span>Skills</span> <i class="las la-shapes"></i>
-            </a>
-        </li>
-        <li>
-            <a class="scroll-to" href="#portfolio">
-                <span>Portfolios</span> <i class="las la-grip-vertical"></i>
-            </a>
-        </li>
-        <!-- <li>
-            <a class="scroll-to" href="#testimonial">
-                <span>Testimonial</span> <i class="lar la-comment"></i>
-            </a>
-        </li> -->
-        <li>
-            <a class="scroll-to" href="#contact">
-                <span>Contact</span> <i class="las la-envelope"></i>
-            </a>
-        </li>
-    </ul>
-
-    <div class="left-sidebar">
-        <div class="sidebar-header d-flex align-items-center justify-content-between">
-            <img src="assets/images/logo.png" alt="Logo" style="width:50px; height:50px;" loading="lazy">
-            <span class="designation" style="font-size: 1rem;">Software Engineer</span>
+    <!-- ====== MINIMAP ====== -->
+    <div class="minimap" id="minimap">
+        <div class="minimap-title">WORLD MAP</div>
+        <div class="minimap-items">
+            <div class="mm-item active" data-level="0">
+                <span class="mm-dot"></span>
+                <span>Start</span>
+            </div>
+            <div class="mm-item" data-level="1">
+                <span class="mm-dot"></span>
+                <span>Identity</span>
+            </div>
+            <div class="mm-item" data-level="2">
+                <span class="mm-dot"></span>
+                <span>The Engineer</span>
+            </div>
+            <div class="mm-item" data-level="3">
+                <span class="mm-dot"></span>
+                <span>The Journey</span>
+            </div>
+            <div class="mm-item" data-level="4">
+                <span class="mm-dot"></span>
+                <span>Arsenal</span>
+            </div>
+            <div class="mm-item" data-level="5">
+                <span class="mm-dot"></span>
+                <span>Quest Log</span>
+            </div>
+            <div class="mm-item" data-level="6">
+                <span class="mm-dot"></span>
+                <span>Gallery</span>
+            </div>
+            <div class="mm-item" data-level="7">
+                <span class="mm-dot"></span>
+                <span>Comms</span>
+            </div>
         </div>
-        <img class="me" src="assets/images/me.png" alt="Me" loading="lazy">
-        <h2 class="email" style="padding-bottom: 20px"><a href="mailto:aswadmuntasir@yahoo.com" style="text-decoration: none; color: #ffffff;">Aswad Muntasir</a></h2>
-        <!-- <h2 class="address">Base in Bangladesh</h2> -->
-        <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
-            <li>
-                <a href="https://stackoverflow.com/users/12500622/aswad-muntasir" target="_blank"><i class="lab la-stack-overflow"></i></a>
-            </li>
-            <li>
-                <a href="https://github.com/AswadMuntasir/" target="_blank"><i class="lab la-github"></i></a>
-            </li>
-        </ul>
-        <a href="#contact" class="theme-btn">
-            <i class="las la-envelope"></i> Hire Me!
-        </a>
+        <div class="minimap-close" id="mapClose"><i class="fas fa-times"></i></div>
     </div>
 
-    <main class="drake-main">
-        <div id="smooth-wrapper">
-            <div id="smooth-content">
+    <!-- ====== LEVEL UP OVERLAY ====== -->
+    <div class="level-up-overlay" id="levelUpOverlay">
+        <div class="level-up-content">
+            <div class="level-up-icon"><i class="fas fa-arrow-up"></i></div>
+            <div class="level-up-text">LEVEL UP!</div>
+            <div class="level-up-sub" id="levelUpSub"></div>
+        </div>
+    </div>
 
-                <div class="left-sidebar">
-                    <div class="sidebar-header d-flex align-items-center justify-content-between">
-                        <img src="assets/images/logo.png" alt="Logo" style="width:36px; height:36px;" loading="lazy">
-                        <span class="designation">Software Engineer</span>
+    <!-- ====== LOCK OVERLAY ====== -->
+    <div class="lock-overlay" id="lockOverlay">
+        <div class="lock-content">
+            <div class="lock-icon"><i class="fas fa-lock"></i></div>
+            <div class="lock-text">LEVEL LOCKED</div>
+            <div class="lock-sub">Complete the previous section to continue</div>
+            <div class="lock-hint">Scroll down or click to interact</div>
+        </div>
+    </div>
+
+    <!-- ====== SCENE CONTAINER ====== -->
+    <div class="scenes" id="scenes">
+
+        <!-- ====== SCENE 0: START SCREEN ====== -->
+        <section class="scene scene-start active" data-level="0">
+            <div class="scene-content start-screen">
+                <div class="start-logo">
+                    <div class="logo-bracket">[</div>
+                    <div class="logo-text">
+                        <span class="logo-main">ASWAD</span>
+                        <span class="logo-sub">MUNTASIR</span>
                     </div>
-                    <img class="me" src="assets/images/me.png" alt="Me" loading="lazy">
-                    <h2 class="email" style="padding-bottom: 20px";><a href="mailto:aswadmuntasir@yahoo.com" style="text-decoration: none; color: #ffffff;">Aswad Muntasir</a></h2>
-                    <p class="copyright">&copy; 2023 Aswad Muntasir. All Rights Reserved</p>
-                    <ul class="social-profile d-flex align-items-center flex-wrap justify-content-center">
-                        <li>
-                            <a href="https://stackoverflow.com/users/12500622/aswad-muntasir" target="_blank"><i class="lab la-stack-overflow"></i></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/AswadMuntasir/" target="_blank"><i class="lab la-github"></i></a>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="theme-btn">
-                        <i class="las la-envelope"></i> Hire Me!
-                    </a>
+                    <div class="logo-bracket">]</div>
                 </div>
-
-                <section class="hero-section page-section scroll-to-page" id="home">
-
-                    <div class="custom-container">
-                        <div class="hero-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-home"></i> Introduce
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Say Hi from <span>Aswad</span>, Software Engineer</h1>
-                            </div>
-                            <p class="scroll-animation" data-animation="fade_from_bottom" style="max-width: 100% !important;">Software Engineer with 4+ years of experience in developing and maintaining websites, web applications, and software systems.</p>
-                            <a href="#portfolio" 
-                                class="go-to-project-btn scroll-to scroll-animation" 
-                                data-animation="rotate_up">
-                                <img src="assets/images/round-text.png" alt="Rounded text" loading="lazy">
-                                <i class="las la-arrow-down"></i>
-                            </a>
-        
-                            <div class="facts d-flex">
-                                <div class="left scroll-animation" data-animation="fade_from_left">
-                                    <h1>4+</h1>
-                                    <p>Years of <br>Experience</p>
-                                </div>
-                                <div class="right scroll-animation" data-animation="fade_from_right">
-                                    <h1>12+</h1>
-                                    <p>projects completed on <br>4 countries</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-        
-                <section class="about-area page-section scroll-to-page" id="about">
-                    <div class="custom-container">
-                        <div class="about-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="lar la-user"></i> About
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom" style="font-size: 45px;">Passionate About Using Technology to Solve <span>Real-World Problems</span></h1>
-                            </div>
-                            <p class="scroll-animation" data-animation="fade_from_bottom" style="max-width: 95%;">
-                                I am a software engineer with 4+ years of experience in developing and maintaining websites, web applications, and software systems. I am proficient in a variety of programming languages and technologies, including Laravel, PHP, TypeScript, jQuery, Vue.js, and JavaScript. I am also experienced in working with agile development methodologies and have a strong understanding of the software development lifecycle.
-
-                                <br><br>
-
-                                I am a highly motivated and results-oriented individual with a passion for technology. I am always looking for new challenges and opportunities to learn and grow. I am confident that I can make a significant contribution to your team and help you achieve your goals.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-        
-        
-                <section class="resume-area page-section scroll-to-page" id="resume">
-                    <div class="custom-container">
-                        <div class="resume-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-briefcase"></i> Resume
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Education & <span>Experience</span></h1>
-                            </div>
-        
-                            <div class="resume-timeline">
-                                <div class="item scroll-animation" data-animation="fade_from_right">
-                                    <span class="date">November 2022 - Present</span>
-                                    <h2>Software Engineer</h2>
-                                    <p>Vyper Solutions</p>
-                                </div>
-                                <div class="item scroll-animation" data-animation="fade_from_right">
-                                    <span class="date">February 2021 - January 2022</span>
-                                    <h2>Software Engineer</h2>
-                                    <p>Weelax</p>
-                                </div>
-                                <div class="item scroll-animation" data-animation="fade_from_right">
-                                    <span class="date">October 2020 - October 2022</span>
-                                    <h2>Associate Software Engineer</h2>
-                                    <p>adorsho praniSheba Limited</p>
-                                </div>
-                                <div class="item scroll-animation" data-animation="fade_from_right">
-                                    <span class="date">May 2017 - April 2021</span>
-                                    <h2>Bachelor Degree in Computer Science and Engineering</h2>
-                                    <p>American International University-Bangladesh (AIUB)</p>
-                                </div>
-                            </div>
-        
-                        </div>
-                    </div>
-                </section>
-        
-        
-                <section class="services-area page-section scroll-to-page" id="services">
-                    <div class="custom-container">
-                        <div class="services-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-stream"></i> Services
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">My <span>Specializations</span></h1>
-                            </div>
-        
-                            <div class="services-items">
-                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-code"></i>
-                                    <h2>Front-end development</h2>
-                                    <p>I am proficient in using HTML, CSS, JavaScript, TypeScript and jQuery to create interactive and responsive web pages. I have experience with popular front-end framework Vue.js, React.js, Bootstrap, Tailwind CSS, etc. I am familiar with the different front-end development principles, such as semantic HTML, responsive design, and accessibility</p>
-                                </div>
-                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-code"></i>
-                                    <h2>Back-end development</h2>
-                                    <p> I am proficient in using programming languages such as PHP, Python and JavaScript to develop back-end web applications. I have experience with popular back-end frameworks, such as Laravel, Django, and Express.js. I am familiar with the different back-end development principles, such as object-oriented programming, data structures, and algorithms.</p>
-                                </div>
-                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-code"></i>
-                                    <h2>CMS development</h2>
-                                    <p>I am proficient in developing and customizing content management systems (CMS). I have experience with popular CMS platforms, such as WordPress and SquareSpace. I am familiar with the different CMS features, such as content creation, editing, and publishing. I am able to develop and customize CMSs to meet the specific needs of my clients.</p>
-                                </div>
-                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-bezier-curve"></i>
-                                    <h2>Databases</h2>
-                                    <p>I am proficient in using databases to store and retrieve data. I have experience with Oracle, MySQL, PostgreSQL, and MongoDB. I am familiar with the different types of databases, such as relational databases and NoSQL databases. I am also familiar with the different database operations, such as create, read, update, and delete.</p>
-                                </div>
-                                <div class="service-item scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-bezier-curve"></i>
-                                    <h2>Version control</h2>
-                                    <p>I am proficient in using version control systems such as Git and GitHub to track changes to my code. I am familiar with the different version control concepts, such as branching, merging, and tagging. I am able to use version control systems to collaborate with other developers on projects</p>
-                                </div>
-                            </div>
-        
-                        </div>
-                    </div>
-                </section>
-        
-        
-                <section class="skills-area page-section scroll-to-page" id="skills">
-                    <div class="custom-container">
-                        <div class="skills-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-shapes"></i> my skills
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">My <span>Advantages</span></h1>
-                            </div>
-        
-                            <div class="row skills text-center">
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/laravel.png" alt="Laravel/PHP" loading="lazy">
-                                            <h1 class="percent">95%</h1>
-                                        </div>
-                                        <p class="name">Laravel/PHP</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_left">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/vuejs.svg" alt="Vue.js" style="width: 70px;" loading="lazy">
-                                            <h1 class="percent">90%</h1>
-                                        </div>
-                                        <p class="name">Vue.js</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_left">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/react.png" alt="React.js" style="width: 70px;" loading="lazy">
-                                            <h1 class="percent">70%</h1>
-                                        </div>
-                                        <p class="name">React.js</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/django.png" alt="Django" style="width: 75%;" loading="lazy">
-                                            <h1 class="percent">75%</h1>
-                                        </div>
-                                        <p class="name">Django</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_top">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/jquery.svg" alt="jQuery" style="width: 75px;" loading="lazy">
-                                            <h1 class="percent">90%</h1>
-                                        </div>
-                                        <p class="name">jQuery</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_right">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/bootstrap-5.svg" alt="Bootstrap" style="width: 75px;" loading="lazy">
-                                            <h1 class="percent">90%</h1>
-                                        </div>
-                                        <p class="name">Bootstrap</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_left">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/wordpress.png" alt="WordPress" loading="lazy">
-                                            <h1 class="percent">70%</h1>
-                                        </div>
-                                        <p class="name">WordPress</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 scroll-animation" data-animation="fade_from_left">
-                                    <div class="skill">
-                                        <div class="skill-inner">
-                                            <img src="assets/images/squarespace.svg" alt="Squarespace" style="width: 75px;" loading="lazy">
-                                            <h1 class="percent">70%</h1>
-                                        </div>
-                                        <p class="name">Squarespace</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-        
-                <section class="portfolio-area page-section scroll-to-page" id="portfolio">
-                    <div class="custom-container">
-                        <div class="portfolio-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-grip-vertical"></i> portfolio
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Some Featured <span>Projects</span></h1>
-                            </div>
-                            <div class="row portfolio-items">
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_left">
-                                    <div class="portfolio-item portfolio-half">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/IOT_praniSheba.png" data-lightbox="example-1">
-                                                <img src="assets/images/IOT_praniSheba.png" alt="Portfolio" loading="lazy">
-                                            </a>
-
-                                            <img src="assets/images/IOT_praniSheba.png"  alt="Portfolio" loading="lazy">
-        
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Vue.js</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Django</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">Prohori - praniSheba IOT Project</a></h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="portfolio-item portfolio-full">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/shurjopay5.png" data-lightbox="example-1">
-                                                <img src="assets/images/shurjopay5.png" alt="Portfolio" loading="lazy">
-                                            </a>
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Laravel</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">jQuery</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Pug.js</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">shurjoPay - shurjoPay Website</a></h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="portfolio-item portfolio-full">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/shurjoMukhi.png" data-lightbox="example-1">
-                                                <img src="assets/images/shurjoMukhi.png" alt="Portfolio" loading="lazy">
-                                            </a>
-        
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Laravel</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Bootstrap</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">shurjoMukhi - shurjoMukhi Website</a></h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_right">
-                                    <div class="portfolio-item portfolio-half">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/praniSheba.png" data-lightbox="example-1">
-                                                <img src="assets/images/praniSheba.png" alt="Portfolio" loading="lazy">
-                                            </a>
-        
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Laravel</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Bootstrap</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">praniSheba - praniSheba Website</a></h2>
-                                    </div>
-                                </div>
-        
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="portfolio-item portfolio-half">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/BISC.png" data-lightbox="example-1">
-                                                <img src="assets/images/BISC.png" alt="Portfolio" loading="lazy">
-                                            </a>
-        
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Wordpress</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">BISC - Bangladesh International School & College Website</a></h2>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 scroll-animation" data-animation="fade_from_bottom">
-                                    <div class="portfolio-item portfolio-half">
-                                        <div class="portfolio-item-inner">
-                                            <a href="assets/images/shurjoMukhiSol.png" data-lightbox="example-1">
-                                                <img src="assets/images/shurjoMukhiSol.png" alt="Portfolio" loading="lazy">
-                                            </a>
-        
-                                            <ul class="portfolio-categories">
-                                                <li>
-                                                    <a href="#">Laravel</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Bootstrap</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h2><a href="#">shurjoMukhi Solutions - shurjoMukhi Solutions Website</a></h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="contact-area page-section scroll-content" id="contact">
-                    <div class="custom-container">
-                        <div class="contact-content content-width">
-                            <div class="section-header">
-                                <h4 class="subtitle scroll-animation" data-animation="fade_from_bottom">
-                                    <i class="las la-envelope"></i> contact
-                                </h4>
-                                <h1 class="scroll-animation" data-animation="fade_from_bottom">Let's Work <span>Together!</span></h1>
-                            </div>
-                            <h3 class="scroll-animation" data-animation="fade_from_bottom"><a href="mailto:aswadmuntasir@yahoo.com" style="text-decoration: none; color: #ffffff;">aswadmuntasir@yahoo.com</a></h3>
-                        </div>
-                    </div>
-                </section>
+                <div class="start-tagline">SOFTWARE ENGINEER</div>
+                <div class="start-subtitle">6+ Years | 10+ Frameworks | 4 Countries</div>
+                <div class="start-press" id="startBtn">
+                    <span class="blink">PRESS START</span>
+                    <div class="press-hint">or press ENTER / SPACE</div>
+                </div>
+                <div class="start-controls">
+                    <span><i class="fas fa-mouse-pointer"></i> Click to interact</span>
+                    <span><i class="fas fa-arrow-down"></i> Scroll to explore</span>
+                </div>
             </div>
-        </div>
-    </main>
-    
+        </section>
 
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/owl.carousel.js"></script>
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/ScrollToPlugin.min.js"></script>
-    <script src="assets/js/lightbox.min.js"></script>
-    
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/ajax-form.js"></script>
-    <script src="assets/js/color.js"></script>
+        <!-- ====== SCENE 1: IDENTITY (Hero/About) ====== -->
+        <section class="scene scene-identity" data-level="1">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 01</span>
+                    <h1 class="scene-title">THE <span class="glow">IDENTITY</span></h1>
+                    <p class="scene-desc">Hover the cards below to scan the engineer's profile</p>
+                </div>
+                <div class="identity-grid">
+                    <div class="id-card glass" data-reveal="true">
+                        <div class="id-card-front">
+                            <div class="id-card-icon"><i class="fas fa-user-astronaut"></i></div>
+                            <div class="id-card-label">CLASS</div>
+                            <div class="id-card-val">Software Engineer</div>
+                        </div>
+                        <div class="id-card-back">
+                            <p>Versatile full-stack engineer with 6+ years building enterprise systems. Currently at <strong>Pedrollo NK Limited</strong>, modernizing legacy software and architecting new solutions.</p>
+                        </div>
+                    </div>
+                    <div class="id-card glass" data-reveal="true">
+                        <div class="id-card-front">
+                            <div class="id-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="id-card-label">BASE</div>
+                            <div class="id-card-val">Dhaka, Bangladesh</div>
+                        </div>
+                        <div class="id-card-back">
+                            <p>Badda, Dhaka, Bangladesh<br><br>Contact: <strong>+880 1713-500-509</strong><br>aswadmuntasir@yahoo.com</p>
+                        </div>
+                    </div>
+                    <div class="id-card glass" data-reveal="true">
+                        <div class="id-card-front">
+                            <div class="id-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="id-card-label">EDUCATION</div>
+                            <div class="id-card-val">B.Sc. CSE - AIUB</div>
+                        </div>
+                        <div class="id-card-back">
+                            <p>American International University-Bangladesh<br>GPA: <strong>3.53 / 4.0</strong><br>Honors Graduate</p>
+                        </div>
+                    </div>
+                    <div class="id-card glass" data-reveal="true">
+                        <div class="id-card-front">
+                            <div class="id-card-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="id-card-label">STATS</div>
+                            <div class="id-card-val">6+ YRS / 15+ PROJECTS</div>
+                        </div>
+                        <div class="id-card-back">
+                            <p>15+ Projects delivered across 4 countries. 4 companies. 10+ technologies mastered. ERP, CRM, IoT, and full-stack web applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-progress-check" id="scene1Check">
+                    <button class="check-btn"><i class="fas fa-check-circle"></i> Scan Complete — Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCENE 2: THE ENGINEER (Resume) ====== -->
+        <section class="scene scene-journey" data-level="2">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 02</span>
+                    <h1 class="scene-title">THE <span class="glow">JOURNEY</span></h1>
+                    <p class="scene-desc">Click each node to unlock work history</p>
+                </div>
+                <div class="journey-track">
+                    <div class="journey-line"></div>
+                    <div class="journey-node" data-unlocked="true">
+                        <div class="node-dot active"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">DEC 2025 — PRESENT</div>
+                            <div class="node-title">Software Engineer</div>
+                            <div class="node-company">Pedrollo NK Limited</div>
+                            <div class="node-loc">Chattogram, Bangladesh</div>
+                            <div class="node-desc">Working across the entire software ecosystem: fixing issues in legacy systems, rebuilding old software with modern frameworks, and developing new applications using <strong>CodeIgniter, Laravel, ASP.net, Next.js, Nuxt.js, Nest.js, and Express.js</strong>.</div>
+                        </div>
+                    </div>
+                    <div class="journey-node" data-unlocked="false">
+                        <div class="node-dot"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">JAN 2023 — PRESENT</div>
+                            <div class="node-title">Laravel ERP Project</div>
+                            <div class="node-company">Client: BFDC — Freelance</div>
+                            <div class="node-loc">Chattogram, Bangladesh</div>
+                            <div class="node-desc">Laravel ERP system for Bangladesh Fish Development Corporation. Accounting & payroll with voucher systems, trial balance, ledger, P&L, and balance sheet.</div>
+                        </div>
+                    </div>
+                    <div class="journey-node" data-unlocked="false">
+                        <div class="node-dot"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">NOV 2022 — FEB 2024</div>
+                            <div class="node-title">Software Engineer</div>
+                            <div class="node-company">Vyper Solutions</div>
+                            <div class="node-loc">Dhaka, Bangladesh</div>
+                            <div class="node-desc">Spearheaded CRM front-end with React.js & TypeScript. Managed infrastructure with Django, Vue.js, and WordPress.</div>
+                        </div>
+                    </div>
+                    <div class="journey-node" data-unlocked="false">
+                        <div class="node-dot"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">FEB 2022 — JAN 2023</div>
+                            <div class="node-title">Software Engineer</div>
+                            <div class="node-company">Weelax</div>
+                            <div class="node-loc">Saint Martin, France (Remote)</div>
+                            <div class="node-desc">ERP system with Django. Websites with Laravel. Billing application. Agile Scrum environment.</div>
+                        </div>
+                    </div>
+                    <div class="journey-node" data-unlocked="false">
+                        <div class="node-dot"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">OCT 2020 — OCT 2022</div>
+                            <div class="node-title">Associate Software Engineer</div>
+                            <div class="node-company">adorsho praniSheba Limited</div>
+                            <div class="node-loc">Dhaka, Bangladesh</div>
+                            <div class="node-desc">IoT front-end with Vue.js. Websites with Laravel, jQuery, Bootstrap. WordPress & Squarespace CMS.</div>
+                        </div>
+                    </div>
+                    <div class="journey-node" data-unlocked="false">
+                        <div class="node-dot"></div>
+                        <div class="node-card glass">
+                            <div class="node-date">MAY 2017 — APR 2021</div>
+                            <div class="node-title">B.Sc. Computer Science & Engineering</div>
+                            <div class="node-company">AIUB</div>
+                            <div class="node-loc">Dhaka, Bangladesh</div>
+                            <div class="node-desc">GPA: 3.53 / 4.0 — Honors Graduate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-progress-check" id="scene2Check" style="display:none;">
+                    <button class="check-btn"><i class="fas fa-check-circle"></i> Journey Explored — Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCENE 3: ARSENAL (Skills) ====== -->
+        <section class="scene scene-arsenal" data-level="3">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 03</span>
+                    <h1 class="scene-title">THE <span class="glow">ARSENAL</span></h1>
+                    <p class="scene-desc">Hover each weapon to reveal its power level</p>
+                </div>
+                <div class="arsenal-grid">
+                    <div class="weapon-card glass" data-power="95">
+                        <div class="weapon-icon"><img src="assets/images/laravel.png" alt="Laravel"></div>
+                        <div class="weapon-name">Laravel / PHP</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:95%"></div></div>
+                        <div class="weapon-pct">95%</div>
+                        <div class="weapon-tier">SS RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="90">
+                        <div class="weapon-icon"><img src="assets/images/vuejs.svg" alt="Vue.js"></div>
+                        <div class="weapon-name">Vue.js / Nuxt.js</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:90%"></div></div>
+                        <div class="weapon-pct">90%</div>
+                        <div class="weapon-tier">S RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="90">
+                        <div class="weapon-icon"><img src="assets/images/jquery.svg" alt="jQuery"></div>
+                        <div class="weapon-name">jQuery</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:90%"></div></div>
+                        <div class="weapon-pct">90%</div>
+                        <div class="weapon-tier">S RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="90">
+                        <div class="weapon-icon"><img src="assets/images/bootstrap-5.svg" alt="Bootstrap"></div>
+                        <div class="weapon-name">Bootstrap</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:90%"></div></div>
+                        <div class="weapon-pct">90%</div>
+                        <div class="weapon-tier">S RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="85">
+                        <div class="weapon-icon"><img src="assets/images/react.png" alt="React"></div>
+                        <div class="weapon-name">React / Next.js</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:85%"></div></div>
+                        <div class="weapon-pct">85%</div>
+                        <div class="weapon-tier">A RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="80">
+                        <div class="weapon-icon"><img src="assets/images/django.png" alt="Django"></div>
+                        <div class="weapon-name">Django / Python</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:80%"></div></div>
+                        <div class="weapon-pct">80%</div>
+                        <div class="weapon-tier">A RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="75">
+                        <div class="weapon-icon"><img src="assets/images/wordpress.png" alt="WordPress"></div>
+                        <div class="weapon-name">WordPress</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:75%"></div></div>
+                        <div class="weapon-pct">75%</div>
+                        <div class="weapon-tier">B RANK</div>
+                    </div>
+                    <div class="weapon-card glass" data-power="70">
+                        <div class="weapon-icon"><img src="assets/images/squarespace.svg" alt="Squarespace"></div>
+                        <div class="weapon-name">Squarespace</div>
+                        <div class="weapon-bar"><div class="weapon-fill" style="--pct:70%"></div></div>
+                        <div class="weapon-pct">70%</div>
+                        <div class="weapon-tier">B RANK</div>
+                    </div>
+                </div>
+                <div class="extras-section">
+                    <div class="extras-title">EXTRA SKILLS UNLOCKED</div>
+                    <div class="extras-tags">
+                        <span class="extra-tag">ASP.net</span>
+                        <span class="extra-tag">Nest.js</span>
+                        <span class="extra-tag">Express.js</span>
+                        <span class="extra-tag">CodeIgniter</span>
+                        <span class="extra-tag">TypeScript</span>
+                        <span class="extra-tag">Node.js</span>
+                        <span class="extra-tag">Docker</span>
+                        <span class="extra-tag">MySQL</span>
+                        <span class="extra-tag">PostgreSQL</span>
+                        <span class="extra-tag">MongoDB</span>
+                        <span class="extra-tag">Git</span>
+                        <span class="extra-tag">REST API</span>
+                        <span class="extra-tag">SASS</span>
+                        <span class="extra-tag">CI/CD</span>
+                        <span class="extra-tag">Figma</span>
+                        <span class="extra-tag">Postman</span>
+                    </div>
+                </div>
+                <div class="scene-progress-check" id="scene3Check">
+                    <button class="check-btn"><i class="fas fa-check-circle"></i> Arsenal Reviewed — Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCENE 4: QUEST LOG (Services) ====== -->
+        <section class="scene scene-quests" data-level="4">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 04</span>
+                    <h1 class="scene-title">QUEST <span class="glow">LOG</span></h1>
+                    <p class="scene-desc">Click a quest to reveal its details</p>
+                </div>
+                <div class="quests-list">
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">Full-Stack Web Development</div>
+                            <div class="quest-detail">End-to-end development using Laravel, ASP.net, Next.js, Nuxt.js, Nest.js, Express.js, Django, Vue.js/React.js. From database design to pixel-perfect interfaces.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">Legacy System Modernization</div>
+                            <div class="quest-detail">Reviving and rebuilding legacy software — migrating old CodeIgniter and ASP.net applications to modern architectures while preserving business logic.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">Backend & API Development</div>
+                            <div class="quest-detail">RESTful APIs, microservices with Nest.js/Express.js, database optimization across MySQL, PostgreSQL, MongoDB. CI/CD pipelines with Docker.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">Frontend Development</div>
+                            <div class="quest-detail">Responsive UIs with Vue.js, React.js, Next.js, Nuxt.js, TypeScript, jQuery, Bootstrap, Tailwind CSS, SASS. Performance & animations.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">ERP & Business Solutions</div>
+                            <div class="quest-detail">Custom ERP systems for accounting, payroll, inventory. Built accounting modules for BFDC with voucher systems, trial balance, ledger, P&L, balance sheet.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                    <div class="quest-card glass">
+                        <div class="quest-status"><i class="fas fa-check"></i></div>
+                        <div class="quest-body">
+                            <div class="quest-name">CMS Development</div>
+                            <div class="quest-detail">WordPress and Squarespace — custom themes, plugins, full site management. Content strategy, SEO, and maintenance.</div>
+                        </div>
+                        <div class="quest-xp">+100 XP</div>
+                    </div>
+                </div>
+                <div class="scene-progress-check" id="scene4Check">
+                    <button class="check-btn"><i class="fas fa-check-circle"></i> All Quests Accepted — Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCENE 5: GALLERY (Portfolio) ====== -->
+        <section class="scene scene-gallery" data-level="5">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 05</span>
+                    <h1 class="scene-title">THE <span class="glow">GALLERY</span></h1>
+                    <p class="scene-desc">Click a project to inspect it</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item glass" data-project="prohori">
+                        <div class="gallery-img">
+                            <img src="assets/images/IOT_praniSheba.png" alt="Prohori IOT">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">Prohori - IOT Project</div>
+                            <div class="gallery-tags">
+                                <span>Vue.js</span><span>Django</span><span>IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass" data-project="shurjopay">
+                        <div class="gallery-img">
+                            <img src="assets/images/shurjopay5.png" alt="shurjoPay">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">shurjoPay - Payment System</div>
+                            <div class="gallery-tags">
+                                <span>Laravel</span><span>jQuery</span><span>Pug.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass" data-project="shurjomukhi">
+                        <div class="gallery-img">
+                            <img src="assets/images/shurjoMukhi.png" alt="shurjoMukhi">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">shurjoMukhi</div>
+                            <div class="gallery-tags">
+                                <span>Laravel</span><span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass" data-project="pranisheba">
+                        <div class="gallery-img">
+                            <img src="assets/images/praniSheba.png" alt="praniSheba">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">praniSheba</div>
+                            <div class="gallery-tags">
+                                <span>Laravel</span><span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass" data-project="bisc">
+                        <div class="gallery-img">
+                            <img src="assets/images/BISC.png" alt="BISC">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">BISC School & College</div>
+                            <div class="gallery-tags">
+                                <span>WordPress</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item glass" data-project="shurjomukhisol">
+                        <div class="gallery-img">
+                            <img src="assets/images/shurjoMukhiSol.png" alt="shurjoMukhi Solutions">
+                        </div>
+                        <div class="gallery-info">
+                            <div class="gallery-name">shurjoMukhi Solutions</div>
+                            <div class="gallery-tags">
+                                <span>Laravel</span><span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scene-progress-check" id="scene5Check">
+                    <button class="check-btn"><i class="fas fa-check-circle"></i> Gallery Explored — Continue</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== SCENE 6: COMMS (Contact) ====== -->
+        <section class="scene scene-comms" data-level="6">
+            <div class="scene-content">
+                <div class="scene-header">
+                    <span class="scene-level">LEVEL 06</span>
+                    <h1 class="scene-title">OPEN <span class="glow">COMMS</span></h1>
+                    <p class="scene-desc">Establish a connection with Aswad</p>
+                </div>
+                <div class="comms-grid">
+                    <a href="mailto:aswadmuntasir@yahoo.com" class="comms-card glass">
+                        <div class="comms-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="comms-label">EMAIL</div>
+                        <div class="comms-value">aswadmuntasir@yahoo.com</div>
+                        <div class="comms-action">Click to Send</div>
+                    </a>
+                    <a href="tel:+8801713500509" class="comms-card glass">
+                        <div class="comms-icon"><i class="fas fa-phone"></i></div>
+                        <div class="comms-label">PHONE</div>
+                        <div class="comms-value">+880 1713-500-509</div>
+                        <div class="comms-action">Click to Call</div>
+                    </a>
+                    <a href="https://linkedin.com/in/aswadmuntasir/" target="_blank" class="comms-card glass">
+                        <div class="comms-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="comms-label">LINKEDIN</div>
+                        <div class="comms-value">linkedin.com/in/aswadmuntasir</div>
+                        <div class="comms-action">Click to Connect</div>
+                    </a>
+                    <a href="https://github.com/AswadMuntasir/" target="_blank" class="comms-card glass">
+                        <div class="comms-icon"><i class="fab fa-github"></i></div>
+                        <div class="comms-label">GITHUB</div>
+                        <div class="comms-value">github.com/AswadMuntasir</div>
+                        <div class="comms-action">Click to View</div>
+                    </a>
+                    <a href="https://stackoverflow.com/users/12500622/aswad-muntasir" target="_blank" class="comms-card glass">
+                        <div class="comms-icon"><i class="fab fa-stack-overflow"></i></div>
+                        <div class="comms-label">STACKOVERFLOW</div>
+                        <div class="comms-value">aswad-muntasir</div>
+                        <div class="comms-action">Click to View</div>
+                    </a>
+                    <div class="comms-card glass comms-location">
+                        <div class="comms-icon"><i class="fas fa-map-pin"></i></div>
+                        <div class="comms-label">LOCATION</div>
+                        <div class="comms-value">Badda, Dhaka, Bangladesh</div>
+                        <div class="comms-action">Open to Remote Work</div>
+                    </div>
+                </div>
+                <div class="comms-footer">
+                    <div class="comms-final glass">
+                        <div class="final-stars">*** QUEST COMPLETE ***</div>
+                        <div class="final-msg">Thanks for exploring my portfolio!</div>
+                        <div class="final-hire">
+                            <a href="mailto:aswadmuntasir@yahoo.com" class="hire-btn">
+                                <i class="fas fa-paper-plane"></i> HIRE ME
+                            </a>
+                            <a href="index2.html" class="hire-btn hire-alt">
+                                <i class="fas fa-arrow-left"></i> CLASSIC VIEW
+                            </a>
+                        </div>
+                        <button class="back-to-start" id="backToStart">
+                            <i class="fas fa-redo"></i> RESTART QUEST
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ====== SCROLL PROMPT ====== -->
+    <div class="scroll-prompt" id="scrollPrompt">
+        <div class="scroll-arrow"><i class="fas fa-chevron-down"></i></div>
+        <span>Scroll to continue</span>
+    </div>
+
+    <script src="assets/js/game.js"></script>
 </body>
 </html>

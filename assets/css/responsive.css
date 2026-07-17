@@ -339,3 +339,84 @@
         margin-top: 10px;
     }
 }
+
+/* ============ NEW ELEMENTS RESPONSIVE ============ */
+
+/* Custom Cursor - hide on mobile */
+@media (max-width: 767px) {
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
+
+/* Typing animation */
+@media (max-width: 767px) {
+    .hero-section .hero-content h1 {
+        font-size: 38px;
+        line-height: 1.3;
+    }
+}
+
+/* Tech stack badges */
+@media (max-width: 767px) {
+    .hero-tech-stack {
+        gap: 8px;
+    }
+    .tech-badge {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+}
+
+/* About stats */
+@media (max-width: 991px) {
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 584px) {
+    .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .about-stats .stat-item {
+        padding: 20px 12px;
+    }
+    .about-stats .stat-item h3 {
+        font-size: 28px;
+    }
+}
+
+/* Contact info grid */
+@media (max-width: 767px) {
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .contact-card {
+        padding: 18px;
+    }
+}
+
+/* Resume description */
+@media (max-width: 584px) {
+    .resume-desc {
+        font-size: 12px;
+    }
+}
+
+/* Additional skill tags */
+@media (max-width: 584px) {
+    .additional-skills-title::before,
+    .additional-skills-title::after {
+        width: 25px;
+    }
+    .skill-tags {
+        gap: 8px;
+    }
+    .skill-tag {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+}
